@@ -7,7 +7,7 @@ namespace LoginRESTfulAPI.Engine
         private const string HOST = "localhost";
         private const string NAME = "login_schema";
         private const string USER = "root";
-        private const string PASS = "";
+        private const string PASS = "Qa59h8fdd";
 
         public MySqlConnection Connection { get; private set; }
 

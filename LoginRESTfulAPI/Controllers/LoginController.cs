@@ -25,7 +25,7 @@ namespace LoginRESTfulAPI.Controllers
             var loginDao = new LoginDao();
             if (loginDao.IsRegistered(user, password))
             {
-                var loginOutput = new LoginOutput() { Content = "Everything is fine!" };
+                var loginOutput = new LoginOutput() { title = "Everything is fine!", status = 200 };
                 return Ok(loginOutput);
             }
             else

@@ -16,9 +16,20 @@ namespace LoginRESTfulAPI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins( "http://localhost:3000/" ).AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin();
+    
+                                  });
+            });
             services.AddControllers();
         }
 
@@ -32,7 +43,10 @@ namespace LoginRESTfulAPI
 
             app.UseRouting();
 
+            app.UseCors(MyAllowSpecificOrigins);
+
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

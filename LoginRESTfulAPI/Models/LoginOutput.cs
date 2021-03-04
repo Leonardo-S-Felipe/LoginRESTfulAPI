@@ -2,6 +2,8 @@
 {
     public class LoginOutput
     {
-        public string Content { get; set; }
+        public string title { get; set; }
+        public int status { get; set; }
+
     }
 }
